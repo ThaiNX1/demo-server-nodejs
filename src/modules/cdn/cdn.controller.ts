@@ -1,0 +1,36 @@
+import { Controller, Post, Req } from '@nestjs/common';
+import { CdnService } from './cdn.service';
+import { FastifyRequest } from 'fastify';
+import { UploadResponseDto } from 'modules/cdn/dto/upload-response.dto';
+import { ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Auth } from 'decorators/auth.decorator';
+
+@ApiTags('CDN')
+@Controller('cdn')
+@Auth()
+export class CdnController {
+  constructor(private readonly service: CdnService) {}
+
+  @Post('/upload')
+  @ApiOperation({
+    summary: 'Upload media',
+  })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        files: {
+          type: 'array',
+          items: {
+            type: 'string',
+            format: 'binary',
+          },
+        },
+      },
+    },
+  })
+  async uploadFile(@Req() req: FastifyRequest): Promise<UploadResponseDto> {
+    return await this.service.uploadFile(req);
+  }
+}
