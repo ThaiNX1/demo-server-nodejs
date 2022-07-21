@@ -48,7 +48,6 @@
     "fastify-helmet": "^5.3.2",
     "fastify-multipart": "^5.2.1",
     "fastify-swagger": "^4.13.0",
-    "firebase-admin": "^10.0.2",
     "googleapis": "^92.0.0",
     "lodash": "^4.17.21",
     "nanoid": "^3.1.32",

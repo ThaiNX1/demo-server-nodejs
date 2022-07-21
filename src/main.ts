@@ -32,8 +32,8 @@ CrudConfigService.load({
 });
 
 import { AppModule } from 'app.module';
-import * as firebase from 'firebase-admin';
-import { ServiceAccount } from 'firebase-admin';
+// import * as firebase from "firebase-admin";
+// import { ServiceAccount } from "firebase-admin";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
