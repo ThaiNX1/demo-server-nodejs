@@ -31,6 +31,12 @@ import { AppService } from 'app.service';
           username: configService.get<string>('TYPEORM_USERNAME'),
           password: configService.get<string>('TYPEORM_PASSWORD'),
           database: configService.get<string>('TYPEORM_DATABASE'),
+          ssl: true,
+          extra: {
+            ssl: {
+              rejectUnauthorized: false,
+            },
+          },
           // logging: true,
           // entities: [join(__dirname, 'src/entities', '*.entity.ts')],
           entities: getMetadataArgsStorage().tables.map((tbl) => tbl.target),
