@@ -37,7 +37,7 @@ import { AppService } from 'app.service';
           // synchronize: !['development', 'production'].includes(
           //   process.env.NODE_ENV,
           // ),
-          // synchronize: true
+          synchronize: true,
         };
       },
     }),
