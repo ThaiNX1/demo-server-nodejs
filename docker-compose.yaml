@@ -13,6 +13,6 @@ jobs:
       - uses: nxthai22@gmail.com/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "db-tomeo-server"
+          heroku_app_name: "demo-tomeo-server"
           heroku_email: "nxthai22@gmail.com"
           usedocker: true
