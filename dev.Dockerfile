@@ -1,20 +1,26 @@
-FROM node:16.11-alpine As runner
-WORKDIR /app
+FROM node:16.8-alpine3.11 as builder
 
-ENV TZ=Asia/Bangkok
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ENV NODE_ENV build
 
-RUN chown -R node:node /app
+WORKDIR /home/node
+
+COPY . /home/node
+
+RUN npm ci \
+    && npm run build \
+    && npm prune --production
+
+# ---
+
+FROM node:16.8-alpine3.11
+
+ENV NODE_ENV production
+
 USER node
+WORKDIR /home/node
 
-ARG NODE_ENV=development
+COPY --from=builder /home/node/package*.json /home/node/
+COPY --from=builder /home/node/node_modules/ /home/node/node_modules/
+COPY --from=builder /home/node/dist/ /home/node/dist/
 
-COPY --chown=node:node ./dist ./dist
-COPY --chown=node:node ./node_modules ./node_modules
-COPY --chown=node:node ./config/.env.development .env
-COPY --chown=node:node config/ormconfig.development.env ormconfig.env
-COPY --chown=node:node ./src/templates ./dist/templates
-
-EXPOSE 4000
-
-CMD ["node", "dist/main"]
+CMD ["node", "dist/main.js"]
