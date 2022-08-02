@@ -105,8 +105,8 @@ async function bootstrap() {
   //   databaseURL: configService.get('FIREBASE_DATABASE_URL'),
   // });
 
-  await app.listen(process.env.PORT || 3000, '0.0.0.0');
-  // await app.listen(process.env.PORT || 3000);
+  const port: number = parseInt(`${process.env.PORT}`) || 3000;
+  await app.listen(port);
 
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
