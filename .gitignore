@@ -37,4 +37,3 @@ lerna-debug.log*
 /cdn
 config/.env
 config/ormconfig.env
-src/app.module.ts
