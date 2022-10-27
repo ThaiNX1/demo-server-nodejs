@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
 import { IngredientService } from '../ingredient/ingredient.service';
@@ -8,7 +8,11 @@ import {
   IngredientRequest,
 } from './dto/calculate-request.dto';
 import { CalculateResponseDto } from './dto/calculate-response.dto';
-import { AnimalType } from '../../enums';
+import { AnimalType, ConfigType } from '../../enums';
+import { ConfigSystemService } from '../config-system/config-system.service';
+import { UserService } from '../user/user.service';
+import { UserEntity } from '../../entities/user.entity';
+import { ConfigCost } from '../../entities/config.entity';
 
 @Injectable()
 export class IngredientCalculateService {
@@ -16,10 +20,13 @@ export class IngredientCalculateService {
     @InjectRepository(IngredientIndexEntity)
     public ingredientIndexRepo: Repository<IngredientIndexEntity>,
     private ingredientService: IngredientService,
+    private configSystemService: ConfigSystemService,
+    private userService: UserService,
   ) {}
 
   async calculateNutrition(
     dto: CalculateRequestDto,
+    user: UserEntity,
   ): Promise<CalculateResponseDto> {
     const ingredientCodes = dto.ingredients.map((ing) => {
       return ing.code;
@@ -299,6 +306,25 @@ export class IngredientCalculateService {
           'LinoleicAcid',
         ) / ingredientWeightTotal,
     };
+    const wallet = await this.userService.walletRepo.findOne({
+      where: {
+        userId: user.id,
+      },
+    });
+    const configValue = (
+      await this.configSystemService.repo.findOne({
+        where: {
+          key: ConfigType.COST,
+        },
+      })
+    )?.value as ConfigCost;
+    if (!wallet || wallet.amount < Number(configValue?.value))
+      throw new BadRequestException('Tài khoản không đủ số dư');
+    const calculateFee = await this.userService.walletRepo.save({
+      ...wallet,
+      amount: wallet.amount - Number(configValue.value),
+    });
+    if (!calculateFee) throw new BadRequestException('Lỗi hệ thống');
     return result;
   }
 

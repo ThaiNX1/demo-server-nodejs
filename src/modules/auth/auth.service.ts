@@ -7,17 +7,15 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
-import { IsNull, LessThanOrEqual, MoreThanOrEqual } from 'typeorm';
 import { UserDecoded } from 'interfaces';
 import { UserService } from 'modules/user/user.service';
 import { RegisterDto } from 'modules/auth/dto/register.dto';
 import { VerifyOtpService } from 'modules/verify-otp/verify-otp.service';
-import { ConfigService } from 'modules/config/config.service';
 import { SendOtpForgotPasswordDto } from './dto/send-otp-forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { LoginResponse } from 'modules/auth/dto/login.response';
 import { VerifyOtpDto } from './dto/verify-otp.dto';
-import { ConfigType, UserStatus } from '../../enums';
+import { UserStatus } from '../../enums';
 import { UserEntity } from 'entities/user.entity';
 
 @Injectable()
@@ -28,7 +26,6 @@ export class AuthService {
     @Inject(VerifyOtpService)
     private verifyOtpService: VerifyOtpService,
     private jwtService: JwtService,
-    private configService: ConfigService,
   ) {}
 
   protected convertTel(tel: string) {

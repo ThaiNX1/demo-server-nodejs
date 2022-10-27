@@ -34,6 +34,7 @@ import { Not } from 'typeorm';
     },
   },
 })
+@Auth()
 export class RoleController implements CrudController<RoleEntity> {
   constructor(
     public readonly service: RoleService,

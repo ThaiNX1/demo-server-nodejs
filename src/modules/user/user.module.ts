@@ -6,10 +6,11 @@ import {
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from 'entities/user.entity';
-import { ConfigModule } from 'modules/config/config.module';
 import { UserController } from 'modules/user/user.controller';
 import { UserService } from 'modules/user/user.service';
 import { RoleEntity } from '../../entities/role.entity';
+import { WalletEntity } from '../../entities/wallet.entity';
+import { WalletHistoryEntity } from '../../entities/wallet-history.entity';
 
 @Module({
   imports: [
@@ -21,15 +22,16 @@ import { RoleEntity } from '../../entities/role.entity';
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: {
           expiresIn: configService.get<string>('JTW_EXPIRE_IN'),
-          issuer: 'https://ushare.com.vn',
+          // issuer: 'https://ushare.com.vn',
         },
       }),
     }),
     TypeOrmModule.forFeature([
       UserEntity,
       RoleEntity,
+      WalletEntity,
+      WalletHistoryEntity,
     ]),
-    ConfigModule,
   ],
   controllers: [UserController],
   providers: [UserService],

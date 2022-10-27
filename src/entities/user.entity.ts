@@ -16,10 +16,13 @@ import {
   Column,
   Entity,
   ManyToOne,
+  OneToMany,
   Tree,
   TreeChildren,
   TreeParent,
 } from 'typeorm';
+import { WalletEntity } from './wallet.entity';
+import { WalletHistoryEntity } from './wallet-history.entity';
 
 @Entity('user')
 @Tree('materialized-path')
@@ -237,6 +240,12 @@ export class UserEntity extends BaseEntity {
   @ApiProperty({ description: 'Ảnh đại diện', required: false })
   @Column({ nullable: true })
   avatar?: string;
+
+  @OneToMany(() => WalletEntity, (wallet) => wallet.userId)
+  wallets: WalletEntity[];
+
+  @OneToMany(() => WalletHistoryEntity, (wallet) => wallet.userId)
+  walletHistories: WalletHistoryEntity[];
 
   @BeforeInsert()
   @BeforeUpdate()

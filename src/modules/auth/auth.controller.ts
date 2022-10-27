@@ -33,8 +33,6 @@ export class AuthController {
     type: LoginResponse,
   })
   login(@Req() req): LoginResponse {
-    if (req.body?.type === LoginType.APP && req.user?.type !== RoleType.PARTNER)
-      throw new ForbiddenException('Bạn không phải CTV');
     return this.service.login(req.user);
   }
 

@@ -3,6 +3,9 @@ import { IngredientCalculateService } from './ingredient-calculate.service';
 import { ApiBody, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CalculateResponseDto } from './dto/calculate-response.dto';
 import { CalculateRequestDto } from './dto/calculate-request.dto';
+import { Auth } from 'decorators/auth.decorator';
+import { User } from 'decorators/user.decorator';
+import { UserEntity } from 'entities/user.entity';
 
 @ApiTags('Ingredient Calculate')
 @Controller('ingredientCalculate')
@@ -23,11 +26,11 @@ export class IngredientCalculateController {
     type: CalculateRequestDto,
   })
   @HttpCode(200)
-  // @Auth()
+  @Auth()
   async calculateNutrition(
     @Body() dto: CalculateRequestDto,
-    // @User() user: UserEntity,
+    @User() user: UserEntity,
   ): Promise<CalculateResponseDto> {
-    return this.ingredientCalculateService.calculateNutrition(dto);
+    return this.ingredientCalculateService.calculateNutrition(dto, user);
   }
 }

@@ -21,6 +21,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { join } from 'path';
 import { IngredientModule } from './modules/ingredient/ingredient.module';
 import { IngredientCalculateModule } from './modules/ingredient-calculate/ingredient-calculate.module';
+import { ConfigSystemModule } from './modules/config-system/config-system.module';
 
 @Module({
   imports: [
@@ -87,7 +88,7 @@ import { IngredientCalculateModule } from './modules/ingredient-calculate/ingred
     ProvinceModule,
     DistrictModule,
     RoleModule,
-    ConfigModule,
+    ConfigSystemModule,
     CategoryModule,
     BrandModule,
     CdnModule,

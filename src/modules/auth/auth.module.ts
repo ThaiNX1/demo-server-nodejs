@@ -10,7 +10,6 @@ import { JwtStrategy } from 'modules/auth/strategies/jwt.strategy';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { VerifyOtpModule } from 'modules/verify-otp/verify-otp.module';
-import { ConfigModule } from 'modules/config/config.module';
 
 @Module({
   imports: [
@@ -28,7 +27,6 @@ import { ConfigModule } from 'modules/config/config.module';
     }),
     UserModule,
     VerifyOtpModule,
-    ConfigModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],

@@ -30,6 +30,7 @@ export enum ConfigType {
   TOP_SLIDE_BANNER = 'top-slide-banner',
   TOP_RIGHT_BANNER = 'top-right-banner',
   TOP_BOTTOM_BANNER = 'top-bottom-banner',
+  COST = 'cost',
 }
 
 export enum OrderStatus {

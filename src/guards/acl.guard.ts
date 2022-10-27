@@ -5,7 +5,7 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { PATH_METADATA } from '@nestjs/common/constants';
-import { RoleType } from "../enums";
+import { RoleType } from '../enums';
 
 @Injectable()
 export class ACLGuard implements CanActivate {
@@ -35,11 +35,11 @@ export class ACLGuard implements CanActivate {
       permission += handler.name + 'Base';
     else if (crudHandler.includes(handler.name)) permission += handler.name;
     else permission += controller.name + '_' + handler.name;
-    const haspermission =
+    const hasPermission =
       !!request?.user?.role?.permissions?.includes(permission);
-    if (!haspermission) {
+    if (!hasPermission) {
       throw new ForbiddenException('Không có quyền truy cập');
     }
-    return haspermission;
+    return hasPermission;
   }
 }
