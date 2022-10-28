@@ -3,7 +3,7 @@ import { BaseEntity } from './base.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { AnimalType } from '../enums';
 
-@Entity('animal')
+@Entity('nutri_animal')
 export class AnimalEntity extends BaseEntity {
   @Column()
   @ApiProperty({ description: 'Tên' })

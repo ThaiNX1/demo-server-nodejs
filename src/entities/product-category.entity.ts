@@ -10,7 +10,7 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 import { ProductEntity } from './product.entity';
 
-@Entity('product_category')
+@Entity('nutri_product_category')
 @Tree('materialized-path')
 export class ProductCategoryEntity extends BaseEntity {
   @Column()

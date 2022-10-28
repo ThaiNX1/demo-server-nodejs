@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from './user.entity';
 import { WalletHistoryEntity } from './wallet-history.entity';
 
-@Entity('wallet')
+@Entity('nutri_wallet')
 export class WalletEntity extends BaseEntity {
   @Column()
   @ApiProperty({ description: 'Id người dùng', required: true })

@@ -1,13 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, ManyToOne } from "typeorm";
-import { BaseEntity } from "./base.entity";
-import { OrderEntity } from "./order.entity";
-import { ProductVariantEntity } from "./product-variant.entity";
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { BaseEntity } from './base.entity';
+import { OrderEntity } from './order.entity';
+import { ProductVariantEntity } from './product-variant.entity';
 
-@Entity("order_product")
+@Entity('nutri_order_product')
 export class OrderProductEntity extends BaseEntity {
   @ApiProperty({
-    description: "Mã đơn hàng"
+    description: 'Mã đơn hàng',
   })
   @Column()
   orderId?: number;
@@ -16,41 +16,41 @@ export class OrderProductEntity extends BaseEntity {
   order?: OrderEntity;
 
   @ApiProperty({
-    description: "ID Sản phẩm"
+    description: 'ID Sản phẩm',
   })
   @Column()
   productId?: number;
 
   @ApiProperty({
-    description: "ID biến thể"
+    description: 'ID biến thể',
   })
   @Column({
-    nullable: true
+    nullable: true,
   })
   variantId?: number;
 
   @ApiProperty({
-    description: "ID biến thể",
-    type: ProductVariantEntity
+    description: 'ID biến thể',
+    type: ProductVariantEntity,
   })
   @ManyToOne(() => ProductVariantEntity, (variant) => variant.id)
   variant?: ProductVariantEntity;
 
   @ApiProperty({
-    description: "Số lượng",
-    required: false
+    description: 'Số lượng',
+    required: false,
   })
   @Column({
-    default: 0
+    default: 0,
   })
   quantity?: number;
 
   @ApiProperty({
-    description: "Giảm giá",
-    required: false
+    description: 'Giảm giá',
+    required: false,
   })
   @Column({
-    default: 0
+    default: 0,
   })
   discount?: number;
 }

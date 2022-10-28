@@ -15,7 +15,7 @@ export class ConfigCost {
   value?: number;
 }
 
-@Entity('config')
+@Entity('nutri_config')
 export class ConfigEntity extends BaseEntity {
   @Column({ type: 'enum', enum: ConfigType, nullable: true })
   @ApiProperty({

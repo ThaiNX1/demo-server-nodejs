@@ -1,10 +1,10 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, ManyToOne } from "typeorm";
-import { BaseEntity } from "./base.entity";
-import { OrderStatus } from "../enums";
-import { OrderEntity } from "./order.entity";
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { BaseEntity } from './base.entity';
+import { OrderStatus } from '../enums';
+import { OrderEntity } from './order.entity';
 
-@Entity('order_history')
+@Entity('nutri_order_history')
 export class OrderHistoryEntity extends BaseEntity {
   @ApiProperty({
     description: 'ID Đơn hàng',

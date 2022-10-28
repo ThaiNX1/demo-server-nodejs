@@ -57,7 +57,7 @@ export class CdnController {
       },
     },
   })
-  @Auth()
+  // @Auth()
   async uploadIngredientIndex(@Req() req: FastifyRequest): Promise<any> {
     return await this.ingredientService.uploadIngredientIndex(req);
   }
@@ -81,7 +81,7 @@ export class CdnController {
       },
     },
   })
-  @Auth()
+  // @Auth()
   async uploadIngredient(@Req() req: FastifyRequest): Promise<any> {
     return await this.ingredientService.uploadIngredient(req);
   }

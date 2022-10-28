@@ -3,7 +3,7 @@ import { BaseEntity } from './base.entity';
 import { DistrictEntity } from 'entities/district.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Entity('province')
+@Entity('nutri_province')
 export class ProvinceEntity extends BaseEntity {
   @ApiProperty({
     description: 'Tên Tỉnh/thành',
@@ -37,5 +37,4 @@ export class ProvinceEntity extends BaseEntity {
 
   @OneToMany(() => DistrictEntity, (district) => district.province)
   districts: DistrictEntity[];
-
 }

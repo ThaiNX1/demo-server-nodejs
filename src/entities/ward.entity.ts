@@ -3,7 +3,7 @@ import { DistrictEntity } from 'entities/district.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 
-@Entity('ward')
+@Entity('nutri_ward')
 export class WardEntity extends BaseEntity {
   @ApiProperty({
     description: 'Tên Phường/Xã',

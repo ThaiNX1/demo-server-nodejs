@@ -10,7 +10,7 @@ import { BaseEntity } from './base.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { ProductEntity } from './product.entity';
 
-@Entity('product_brand')
+@Entity('nutri_product_brand')
 export class ProductBrandEntity extends BaseEntity {
   @Column()
   @ApiProperty({

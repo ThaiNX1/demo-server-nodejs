@@ -2,7 +2,7 @@ import { Column, Entity } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Entity('ingredient')
+@Entity('nutri_ingredient')
 export class IngredientEntity extends BaseEntity {
   @Column()
   @ApiProperty({ description: 'Tên nguyên liệu' })

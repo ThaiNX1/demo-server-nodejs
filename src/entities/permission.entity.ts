@@ -3,7 +3,7 @@ import { BaseEntity } from 'entities/base.entity';
 import { RoleEntity } from 'entities/role.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Entity('permission')
+@Entity('nutri_permission')
 export class PermissionEntity extends BaseEntity {
   @Column()
   name: string;

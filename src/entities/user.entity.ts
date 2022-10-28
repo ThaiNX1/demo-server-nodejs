@@ -24,7 +24,7 @@ import {
 import { WalletEntity } from './wallet.entity';
 import { WalletHistoryEntity } from './wallet-history.entity';
 
-@Entity('user')
+@Entity('nutri_user')
 @Tree('materialized-path')
 export class UserEntity extends BaseEntity {
   @Column({

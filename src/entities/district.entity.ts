@@ -4,7 +4,7 @@ import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { JoinColumn } from 'typeorm';
 
-@Entity('district')
+@Entity('nutri_district')
 export class DistrictEntity extends BaseEntity {
   @ApiProperty({
     description: 'Tên Quận/huyện',

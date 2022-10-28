@@ -1,29 +1,29 @@
-import { BaseEntity } from "./base.entity";
-import { Column, Entity, ManyToOne } from "typeorm";
-import { OrderEntity } from "./order.entity";
-import { ApiProperty } from "@nestjs/swagger";
-import { OrderStatus } from "../enums";
+import { BaseEntity } from './base.entity';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { OrderEntity } from './order.entity';
+import { ApiProperty } from '@nestjs/swagger';
+import { OrderStatus } from '../enums';
 
-@Entity("order_revenue")
+@Entity('nutri_order_revenue')
 export class OrderRevenueEntity extends BaseEntity {
   @Column()
   @ApiProperty({
-    description: "Trạng thái đơn hàng",
+    description: 'Trạng thái đơn hàng',
     required: true,
-    type: OrderStatus
+    type: OrderStatus,
   })
   status: OrderStatus;
 
   @Column()
   @ApiProperty({
-    description: "Doanh thu đơn hàng",
-    required: true
+    description: 'Doanh thu đơn hàng',
+    required: true,
   })
   revenue: number | 0;
 
   @Column()
   @ApiProperty({
-    description: "Tháng tính doanh thu"
+    description: 'Tháng tính doanh thu',
   })
   month?: Date;
 }

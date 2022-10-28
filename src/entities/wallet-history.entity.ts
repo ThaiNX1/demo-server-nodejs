@@ -4,7 +4,7 @@ import { BaseEntity } from './base.entity';
 import { UserEntity } from './user.entity';
 import { WalletEntity } from './wallet.entity';
 
-@Entity('wallet-history')
+@Entity('nutri_wallet-history')
 export class WalletHistoryEntity extends BaseEntity {
   @Column()
   @ApiProperty({ description: 'Id người dùng', required: true })

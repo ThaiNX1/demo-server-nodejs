@@ -56,7 +56,7 @@ import { ConfigSystemModule } from './modules/config-system/config-system.module
           // synchronize: !['development', 'production'].includes(
           //   process.env.NODE_ENV,
           // ),
-          synchronize: true,
+          synchronize: false,
         };
       },
     }),

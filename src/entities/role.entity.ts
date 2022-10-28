@@ -6,7 +6,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { RoleType } from 'enums';
 
-@Entity('role')
+@Entity('nutri_role')
 export class RoleEntity extends BaseEntity {
   @ApiProperty({
     description: 'Tên nhóm',

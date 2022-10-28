@@ -1,17 +1,17 @@
-import { Column, Entity, ManyToOne } from "typeorm";
-import { BaseEntity } from "./base.entity";
-import { ApiProperty } from "@nestjs/swagger";
-import { WarehouseHistoryType } from "../enums";
-import { ProductEntity } from "./product.entity";
-import { ProductVariantEntity } from "./product-variant.entity";
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { BaseEntity } from './base.entity';
+import { ApiProperty } from '@nestjs/swagger';
+import { WarehouseHistoryType } from '../enums';
+import { ProductEntity } from './product.entity';
+import { ProductVariantEntity } from './product-variant.entity';
 
-@Entity("warehouse_history")
+@Entity('nutri_warehouse_history')
 export class WarehouseHistoryEntity extends BaseEntity {
   @Column()
   @ApiProperty({
-    description: "Id sản phẩm",
+    description: 'Id sản phẩm',
     required: true,
-    type: Number
+    type: Number,
   })
   productId: number;
 
@@ -19,12 +19,12 @@ export class WarehouseHistoryEntity extends BaseEntity {
   product: ProductEntity;
 
   @Column({
-    nullable: true
+    nullable: true,
   })
   @ApiProperty({
-    description: "Id biến tể",
+    description: 'Id biến tể',
     required: false,
-    type: Number
+    type: Number,
   })
   variantId?: number;
 
@@ -33,19 +33,18 @@ export class WarehouseHistoryEntity extends BaseEntity {
 
   @Column()
   @ApiProperty({
-    description: "Loại thao tác",
+    description: 'Loại thao tác',
     required: true,
-    type: "enum",
-    enum: WarehouseHistoryType
+    type: 'enum',
+    enum: WarehouseHistoryType,
   })
   type: WarehouseHistoryType;
 
   @Column()
   @ApiProperty({
-    description: "Số lượng",
+    description: 'Số lượng',
     required: true,
-    type: Number
+    type: Number,
   })
   quantity: number;
-
 }

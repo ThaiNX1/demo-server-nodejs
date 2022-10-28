@@ -3,7 +3,7 @@ import { BaseEntity } from './base.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { AnimalType } from '../enums';
 
-@Entity('ingredient-index')
+@Entity('nutri_ingredient-index')
 export class IngredientIndexEntity extends BaseEntity {
   @Column()
   @ApiProperty({ description: 'Tên nguyên liệu' })
