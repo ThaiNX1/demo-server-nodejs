@@ -15,6 +15,7 @@ const bcrypt = require('bcrypt');
   query: {
     exclude: ['password'],
     join: {
+      role: {},
       ward: {},
       'ward.district': {
         alias: 'district',
