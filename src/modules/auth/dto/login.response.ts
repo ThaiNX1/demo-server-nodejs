@@ -7,4 +7,10 @@ export class LoginResponse {
     description: 'Access token',
   })
   token: string;
+
+  @IsString()
+  @ApiProperty({
+    description: 'User info',
+  })
+  user?: any;
 }

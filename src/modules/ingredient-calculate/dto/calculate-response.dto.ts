@@ -1,9 +1,21 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CalculateItem {
+  @ApiProperty({
+    description: 'Mã',
+  })
   code?: string;
+  @ApiProperty({
+    description: 'Tên',
+  })
   name?: string;
+  @ApiProperty({
+    description: 'Giá trị',
+  })
   value?: number;
+  @ApiProperty({
+    description: 'Đơn vị tính',
+  })
   unit?: string;
 }
 

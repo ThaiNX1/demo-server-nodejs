@@ -69,7 +69,11 @@ export class AuthService {
       throw new ForbiddenException('Tài khoản chưa kích hoạt');
     }
     let avatar = '';
-    if (!user.avatar?.includes('http') && !user.avatar?.includes('https'))
+    if (
+      user.avatar &&
+      !user.avatar?.includes('http') &&
+      !user.avatar?.includes('https')
+    )
       avatar = 'https://ushare.hn.ss.bfcplatform.vn/' + user.avatar;
     else avatar = user.avatar;
     return {
@@ -87,6 +91,7 @@ export class AuthService {
   login(user: any): LoginResponse {
     return {
       token: this.jwtService.sign(user),
+      user: user,
     };
   }
 
