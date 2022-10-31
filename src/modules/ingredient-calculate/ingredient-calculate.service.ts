@@ -8,7 +8,7 @@ import {
   IngredientRequest,
 } from './dto/calculate-request.dto';
 import { CalculateResponseDto } from './dto/calculate-response.dto';
-import { AnimalType, ConfigType } from '../../enums';
+import { AnimalType, ConfigType, RoleType } from '../../enums';
 import { ConfigSystemService } from '../config-system/config-system.service';
 import { UserService } from '../user/user.service';
 import { UserEntity } from '../../entities/user.entity';
@@ -306,6 +306,7 @@ export class IngredientCalculateService {
           'LinoleicAcid',
         ) / ingredientWeightTotal,
     };
+    if (user?.role?.type === RoleType.ADMIN) return result;
     const wallet = await this.userService.walletRepo.findOne({
       where: {
         userId: user.id,
