@@ -17,6 +17,7 @@ import { LoginResponse } from 'modules/auth/dto/login.response';
 import { VerifyOtpDto } from './dto/verify-otp.dto';
 import { UserStatus } from '../../enums';
 import { UserEntity } from 'entities/user.entity';
+import { WalletEntity } from '../../entities/wallet.entity';
 
 @Injectable()
 export class AuthService {
@@ -145,7 +146,10 @@ export class AuthService {
       const userCreated = await this.userService.repo.save(user);
       if (!userCreated)
         throw new Error('Không thể tạo tài khoản! Vui lòng thử lại');
-
+      const wallet = new WalletEntity();
+      wallet.userId = userCreated.id;
+      wallet.amount = 0;
+      await this.userService.walletRepo.save(wallet);
       return userCreated;
     }
   }

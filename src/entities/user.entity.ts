@@ -85,6 +85,11 @@ export class UserEntity extends BaseEntity {
   })
   roleId?: number;
 
+  @ApiProperty({
+    description: 'Role',
+    required: false,
+    type: RoleEntity,
+  })
   @ManyToOne(() => RoleEntity, (role) => role.users, {
     nullable: true,
   })
@@ -175,6 +180,11 @@ export class UserEntity extends BaseEntity {
   })
   wardId?: number;
 
+  @ApiProperty({
+    description: 'Ward',
+    required: false,
+    type: WardEntity,
+  })
   @ManyToOne(() => WardEntity, (ward) => ward.id)
   ward?: WardEntity;
 
@@ -241,9 +251,19 @@ export class UserEntity extends BaseEntity {
   @Column({ nullable: true })
   avatar?: string;
 
+  @ApiProperty({
+    description: 'Wallet',
+    required: false,
+    type: [WalletEntity],
+  })
   @OneToMany(() => WalletEntity, (wallet) => wallet.userId)
   wallets: WalletEntity[];
 
+  @ApiProperty({
+    description: 'Wallet History',
+    required: false,
+    type: [WalletHistoryEntity],
+  })
   @OneToMany(() => WalletHistoryEntity, (wallet) => wallet.userId)
   walletHistories: WalletHistoryEntity[];
 

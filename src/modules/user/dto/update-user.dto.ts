@@ -13,13 +13,8 @@ export class ChangePasswordDto {
     required: true,
   })
   newPassword: string;
-
-  @ApiProperty({
-    description: 'Nhập lại mật khẩu mới',
-    required: true,
-  })
-  newPasswordConfirm: string;
 }
+
 export class UpdatePaymentInfoDto extends PickType(UserEntity, [
   'bankAccountName',
   'bankNumber',
