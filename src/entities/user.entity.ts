@@ -54,13 +54,13 @@ export class UserEntity extends BaseEntity {
     description: 'Lưu các mật khẩu cũ',
     required: false,
   })
-  passwordHistory: string[];
+  passwordHistory?: string[];
 
   @Column()
   @ApiProperty({
     description: 'Tên',
   })
-  fullName: string;
+  fullName?: string;
 
   @ApiProperty({
     description: 'Số điện thoại',
@@ -234,7 +234,7 @@ export class UserEntity extends BaseEntity {
     description: 'Giới tính',
     enum: UserGender,
   })
-  gender: UserGender;
+  gender?: UserGender;
 
   @Column({
     type: 'enum',

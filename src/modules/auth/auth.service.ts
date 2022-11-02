@@ -111,11 +111,11 @@ export class AuthService {
       existUser.password = dto.password;
       existUser.fullName = dto.fullName;
       existUser.tel = dto.tel;
-      existUser.gender = dto.gender;
-      existUser.wardId = dto.wardId;
-      existUser.dob = dto.dob;
+      // existUser.gender = dto.gender;
+      // existUser.wardId = dto.wardId;
+      // existUser.dob = dto.dob;
       existUser.email = dto.email;
-      // existUser.roleId = 2;
+      existUser.roleId = 2;
       existUser.status = UserStatus.INACTIVE;
       await this.userService.repo.save(existUser);
       return existUser;
@@ -126,11 +126,11 @@ export class AuthService {
       user.password = dto.password;
       user.fullName = dto.fullName;
       user.tel = dto.tel;
-      user.gender = dto.gender;
-      user.wardId = dto.wardId;
-      user.dob = dto.dob;
+      // user.gender = dto.gender;
+      // user.wardId = dto.wardId;
+      // user.dob = dto.dob;
       user.email = dto.email;
-      // user.roleId = 2;
+      user.roleId = 2;
       user.status = UserStatus.INACTIVE;
 
       // if (dto.referralCode) {
