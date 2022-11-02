@@ -319,11 +319,11 @@ export class IngredientCalculateService {
         },
       })
     )?.value as ConfigCost;
-    if (!wallet || wallet.amount < Number(configValue?.value))
+    if (!wallet || wallet.amount < Number(configValue))
       throw new BadRequestException('Tài khoản không đủ số dư');
     const calculateFee = await this.userService.walletRepo.save({
       ...wallet,
-      amount: wallet.amount - Number(configValue.value),
+      amount: Number(wallet.amount) - Number(configValue || 300),
     });
     if (!calculateFee) throw new BadRequestException('Lỗi hệ thống');
     return result;
