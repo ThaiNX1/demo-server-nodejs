@@ -40,6 +40,7 @@ export class UserEntity extends BaseEntity {
   @IsOptional()
   @ApiProperty({
     description: 'Mật khẩu',
+    required: false,
   })
   @MinLength(6, { message: 'Mật khẩu cần có độ dài >= 6 ký tự!' })
   password?: string;
@@ -59,11 +60,13 @@ export class UserEntity extends BaseEntity {
   @Column()
   @ApiProperty({
     description: 'Tên',
+    required: false,
   })
   fullName?: string;
 
   @ApiProperty({
     description: 'Số điện thoại',
+    required: false,
   })
   // @Length(10, 12)
   @IsNumberString()
@@ -93,7 +96,7 @@ export class UserEntity extends BaseEntity {
   @ManyToOne(() => RoleEntity, (role) => role.users, {
     nullable: true,
   })
-  role: RoleEntity;
+  role?: RoleEntity;
 
   @ApiProperty({
     description: 'Danh sách cấp dưới ',
@@ -233,6 +236,7 @@ export class UserEntity extends BaseEntity {
   @ApiProperty({
     description: 'Giới tính',
     enum: UserGender,
+    required: false,
   })
   gender?: UserGender;
 
@@ -244,6 +248,7 @@ export class UserEntity extends BaseEntity {
   @ApiProperty({
     description: 'Trạng thái',
     enum: UserStatus,
+    required: false,
   })
   status: UserStatus;
 
@@ -256,8 +261,8 @@ export class UserEntity extends BaseEntity {
     required: false,
     type: [WalletEntity],
   })
-  @OneToMany(() => WalletEntity, (wallet) => wallet.userId)
-  wallets: WalletEntity[];
+  @OneToMany(() => WalletEntity, (wallet) => wallet.user)
+  wallets?: WalletEntity[];
 
   @ApiProperty({
     description: 'Wallet History',
@@ -265,7 +270,7 @@ export class UserEntity extends BaseEntity {
     type: [WalletHistoryEntity],
   })
   @OneToMany(() => WalletHistoryEntity, (wallet) => wallet.userId)
-  walletHistories: WalletHistoryEntity[];
+  walletHistories?: WalletHistoryEntity[];
 
   @BeforeInsert()
   @BeforeUpdate()
